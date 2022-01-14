@@ -1,4 +1,4 @@
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,17 +13,17 @@
         <p id="countdown">We will be redirecting you to a random home, in 5 seconds!</p>
     </body>
     <script>
-        const int = Math.floor(Math.random() * 98031697) + 1;
-        const url = `https://www.zillow.com/homedetails/${int}_zpid/`;
+        let url = function(int){
+            return `https://www.zillow.com/homedetails/${int}_zpid/`;
+        }
 
         document.addEventListener("DOMContentLoaded", function(){
             let timeLeft = 5;
-            const interval = setInterval(function () {
+            setInterval(function () {
                 timeLeft--;
                 if (timeLeft <= 0) {
-                    clearInterval(interval);
                     timeLeft = 5;
-                    window.location.href = url;
+                    window.location.href = url(Math.floor(Math.random() * 98031697) + 1);
                 } else {
                     let plural = timeLeft > 1 ? 's' : '';
                     document.getElementById("countdown").innerHTML = `We will be redirecting you to a random home, in ${timeLeft} second${plural}!`;
