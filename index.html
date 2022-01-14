@@ -22,9 +22,11 @@
                 timeLeft--;
                 if (timeLeft <= 0) {
                     clearInterval(interval);
+                    timeLeft = 5;
                     window.location.href = url;
                 } else {
-                    document.getElementById("countdown").innerHTML = `We will be redirecting you to a random home, in ${timeLeft} seconds!`;
+                    let plural = timeLeft > 1 ? 's' : '';
+                    document.getElementById("countdown").innerHTML = `We will be redirecting you to a random home, in ${timeLeft} second${plural}!`;
                 }
             }, 1000);
         });
