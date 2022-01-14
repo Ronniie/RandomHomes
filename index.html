@@ -1,1 +1,32 @@
-hello, welcome to random.homes; though, it is still a work in progress! random.homes will do what it means, it will send you to a random home on Zillow.
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>RandomHomes</title>
+        <meta name="description" content="">
+        <meta name="author" content="">
+    </head>
+    <body>
+    <!-- Center Paragraph -->
+    <p style="text-align: center">
+        <h1>RandomHomes</h1>
+        <p id="countdown">We will be redirecting you to a random home, in 5 seconds!</p>
+    </body>
+    <script>
+        const int = Math.floor(Math.random() * 98031697) + 1;
+        const url = `https://www.zillow.com/homedetails/${int}_zpid/`;
+
+        document.addEventListener("DOMContentLoaded", function(){
+            let timeLeft = 5;
+            const interval = setInterval(function () {
+                timeLeft--;
+                if (timeLeft <= 0) {
+                    clearInterval(interval);
+                    window.location.href = url;
+                } else {
+                    document.getElementById("countdown").innerHTML = `We will be redirecting you to a random home, in ${timeLeft} seconds!`;
+                }
+            }, 1000);
+        });
+    </script>
+</html>
